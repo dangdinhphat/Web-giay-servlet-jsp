@@ -36,6 +36,9 @@
 
                 <div class="hidden md:flex flex-1 max-w-md mx-8">
                     <form action="search" method="get" class="flex items-center gap-2">
+                        <c:forEach var="brandId" items="${selectedBrandIds}">
+                            <input type="hidden" name="brand" value="${brandId}">
+                        </c:forEach>
 
                         <input type="text" 
                                name="searchQuery" 
@@ -90,24 +93,31 @@
                         <div>
                             <h3 class="text-xs font-bold text-stone-400 uppercase tracking-wider mb-3">Thương hiệu</h3>
                             <div class="space-y-2.5">
-                                <label class="flex items-center gap-3 text-sm font-medium text-stone-600 cursor-pointer group">
-                                    <input type="checkbox" class="w-4 h-4 rounded border-stone-300 text-orange-600 focus:ring-orange-500/20 cursor-pointer">
-                                    <span class="group-hover:text-stone-900 transition">Nike</span>
-                                </label>
-                                <label class="flex items-center gap-3 text-sm font-medium text-stone-600 cursor-pointer group">
-                                    <input type="checkbox" class="w-4 h-4 rounded border-stone-300 text-orange-600 focus:ring-orange-500/20 cursor-pointer">
-                                    <span class="group-hover:text-stone-900 transition">Adidas</span>
-                                </label>
-                                <label class="flex items-center gap-3 text-sm font-medium text-stone-600 cursor-pointer group">
-                                    <input type="checkbox" class="w-4 h-4 rounded border-stone-300 text-orange-600 focus:ring-orange-500/20 cursor-pointer">
-                                    <span class="group-hover:text-stone-900 transition">Puma</span>
-                                </label>
+                                <form action="search" method="GET">
+                                    <input type="hidden" name="searchQuery" value="${txtSearchValue}">
+                                    <label class="flex items-center gap-3 text-sm font-medium text-stone-600 cursor-pointer group">
+                                        <input type="checkbox" name="brand" value="1" ${selectedBrandIds.contains('1') ? 'checked' : ''} class="w-4 h-4 rounded border-stone-300 text-orange-600 focus:ring-orange-500/20 cursor-pointer">
+                                        <span class="group-hover:text-stone-900 transition">Nike</span>
+                                    </label>
+
+                                    <label class="flex items-center gap-3 text-sm font-medium text-stone-600 cursor-pointer group">
+                                        <input type="checkbox" name="brand" value="2" ${selectedBrandIds.contains('2') ? 'checked' : ''} class="w-4 h-4 rounded border-stone-300 text-orange-600 focus:ring-orange-500/20 cursor-pointer">
+                                        <span class="group-hover:text-stone-900 transition">Adidas</span>
+                                    </label>
+
+                                    <label class="flex items-center gap-3 text-sm font-medium text-stone-600 cursor-pointer group">
+                                        <input type="checkbox" name="brand" value="3" ${selectedBrandIds.contains('3') ? 'checked' : ''} class="w-4 h-4 rounded border-stone-300 text-orange-600 focus:ring-orange-500/20 cursor-pointer">
+                                        <span class="group-hover:text-stone-900 transition">Puma</span>
+                                    </label>
+
+                                    <button type="submit" class="w-full mt-2 py-2.5 bg-stone-900 hover:bg-orange-600 text-white font-semibold text-sm rounded-xl transition duration-300 shadow-sm">
+                                        Áp dụng bộ lọc
+                                    </button>
+                                </form>                                
                             </div>
                         </div>
 
-                        <button class="w-full mt-2 py-2.5 bg-stone-900 hover:bg-orange-600 text-white font-semibold text-sm rounded-xl transition duration-300 shadow-sm">
-                            Áp dụng bộ lọc
-                        </button>
+                        
                     </div>
                 </div>
             </aside>
@@ -252,7 +262,7 @@
                     
                     
         <footer class="bg-stone-900 text-stone-400 py-8 border-t border-stone-800 text-center text-sm">
-            <p>&copy; 2026 KICKSZONE. Hệ thống mô phỏng đồ án Java Web Servlet/JSP.</p>
+            <p>&copy; TRANG WEB BÁN GIÀY SỐ 1 VIỆT NAM.</p>
         </footer>
 
                     

@@ -13,6 +13,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.Collections;
 import java.util.List;
 import model.Product;
 
@@ -65,6 +66,8 @@ public class ProductServlet extends HttpServlet {
         List<Product> list = dao.getAllProducts(); // Lấy danh sách từ DB lên
 
         request.setAttribute("dataProduct", list); // Gửi danh sách đi
+        request.setAttribute("txtSearchValue", "");
+        request.setAttribute("selectedBrandIds", Collections.emptyList());
         request.getRequestDispatcher("giay.jsp").forward(request, response);
     } 
 

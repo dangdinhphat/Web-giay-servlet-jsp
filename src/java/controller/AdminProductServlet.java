@@ -133,11 +133,12 @@ public class AdminProductServlet extends HttpServlet {
                 String name = request.getParameter("name");
                 double price = Double.parseDouble(request.getParameter("price"));
                 String status = request.getParameter("status");
+                int brandId = Integer.parseInt(request.getParameter("brandId"));
                 String image = request.getParameter("image");
                 String description = request.getParameter("description");
                 
                 // 3. Gọi DAO để thực hiện thêm vào database
-                pDao.insertProduct(name, description, price, status);
+                pDao.insertProduct(name, description, price, status, brandId, image);
                 
                 // 4. Thêm thành công thì chuyển hướng quay về trang danh sách sản phẩm
                 response.sendRedirect("AdminProductServlet?action=list");
